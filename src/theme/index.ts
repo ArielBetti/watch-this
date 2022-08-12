@@ -2,8 +2,9 @@ import merge from "deepmerge";
 
 import { dark } from "./default";
 import { ligth } from "./ligth";
+import { ITheme } from "./types";
 
-const selectTheme = (theme: string) => {
+const selectTheme = (theme: string): ITheme => {
   let selectedTheme;
 
   switch (theme.toLowerCase()) {

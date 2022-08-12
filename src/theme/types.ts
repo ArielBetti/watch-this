@@ -34,4 +34,8 @@ export interface ITheme {
     lg?: string;
     xl?: string;
   };
+  transitions?: {
+    time: string;
+    type: string;
+  };
 }

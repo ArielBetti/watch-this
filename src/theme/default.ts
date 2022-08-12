@@ -1,4 +1,4 @@
-import { ITheme } from "./type";
+import { ITheme } from "./types";
 
 export const dark = (): ITheme => ({
   colors: {
@@ -35,5 +35,9 @@ export const dark = (): ITheme => ({
     md: "768px",
     lg: "992px",
     xl: "1350px",
+  },
+  transitions: {
+    time: "0.3s",
+    type: "ease",
   },
 });

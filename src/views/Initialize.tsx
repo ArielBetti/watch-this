@@ -1,13 +1,14 @@
 import { useMemo } from "react";
 import { useRecoilValue } from "recoil";
-import AppRouter from "./routes";
-import selectTheme from "./theme";
+import AppRouter from "../routes";
+import selectTheme from "../theme";
 
 import { ThemeProvider } from "styled-components";
-import { atomDarkTheme } from "./store/atoms";
-import { ITheme } from "./theme/type";
+import { atomDarkTheme } from "../store/atoms";
+import { ITheme } from "../theme/types";
+import { AppBaseUI, ResetCSS } from "../globalStyles";
 
-const App = () => {
+const Initialize = () => {
   const prefersDarkMode = useRecoilValue(atomDarkTheme);
 
   // theme changer
@@ -16,13 +17,14 @@ const App = () => {
     [prefersDarkMode]
   );
 
-  console.log("@THEME", prefersDarkMode, theme);
-
   return (
     <ThemeProvider theme={theme}>
-      <AppRouter />
+      <ResetCSS />
+      <AppBaseUI>
+        <AppRouter />
+      </AppBaseUI>
     </ThemeProvider>
   );
 };
 
-export default App;
+export default Initialize;

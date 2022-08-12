@@ -4,18 +4,23 @@ import {
   useRecoilValueLoadable,
   useSetRecoilState,
 } from "recoil";
-import { useTheme } from "styled-components";
+
+// atoms: components
+import * as Atom from "./style";
+
+// recoil: atoms
 import {
   atomDarkTheme,
   atomSignInBody,
   atomSignUpBody,
 } from "../../store/atoms";
+
+// recoil: selectors
 import { sendSignIn, sendSignUp } from "../../store/selectors";
-import { ITheme } from "../../theme/type";
 
-function Welcome() {
-  const theme = useTheme() as ITheme;
-
+// ::
+const Welcome = () => {
+  // local: states
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -24,6 +29,7 @@ function Welcome() {
   const setSignInBody = useSetRecoilState(atomSignInBody);
   const [toggleTheme, setToggleTheme] = useRecoilState(atomDarkTheme);
 
+  // recoil: loadables
   const signUpLoadable = useRecoilValueLoadable(sendSignUp);
   const signInLoadable = useRecoilValueLoadable(sendSignIn);
 
@@ -70,22 +76,29 @@ function Welcome() {
   }, [signInLoadable.state, signInLoadable.contents]);
 
   return (
-    <div className="App" style={{ backgroundColor: theme?.colors?.background }}>
-      <input
-        type="text"
-        placeholder="name"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="password"
-        name="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={() => setToggleTheme(!toggleTheme)}>Alterar tema</button>
-      <button onClick={() => onSignUp()}>Registrar</button>
-      <button onClick={() => onSignIn()}>Entrar</button>
-    </div>
+    <Atom.WelcomeContainer>
+      <div>
+        <Atom.WelcomeTitle>YEsye</Atom.WelcomeTitle>
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="name"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="password"
+          name="password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button onClick={() => setToggleTheme(!toggleTheme)}>
+          Alterar tema
+        </button>
+        <button onClick={() => onSignUp()}>Registrar</button>
+        <button onClick={() => onSignIn()}>Entrar</button>
+      </div>
+    </Atom.WelcomeContainer>
   );
-}
+};
 
 export default Welcome;

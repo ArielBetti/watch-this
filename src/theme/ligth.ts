@@ -1,4 +1,4 @@
-import { ITheme } from "./type";
+import { ITheme } from "./types";
 
 export const ligth = (): Partial<ITheme> => ({
   colors: {
