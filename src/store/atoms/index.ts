@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { localStorageEffect } from "../../utils/localStorageEffect";
 
 export const atomUser = atom({
   key: "atomUser",
@@ -13,4 +14,10 @@ export const atomSignUpBody = atom<any>({
 export const atomSignInBody = atom<any>({
   key: "atomSignInBody",
   default: undefined,
+});
+
+export const atomDarkTheme = atom({
+  key: "atomDarkTheme",
+  default: true,
+  effects: [localStorageEffect("dark_mode")],
 });
