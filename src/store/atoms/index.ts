@@ -4,6 +4,7 @@ import { localStorageEffect } from "../../utils/localStorageEffect";
 export const atomUser = atom({
   key: "atomUser",
   default: undefined,
+  effects: [localStorageEffect("current_user")],
 });
 
 export const atomSignUpBody = atom<any>({

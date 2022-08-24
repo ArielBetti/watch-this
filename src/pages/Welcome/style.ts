@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import { Container } from "../../Components";
-import { Title } from "../../typography";
+import { Heading } from "webetti-react-sdk";
 
-export const WelcomeContainer = styled(Container)`
-  justify-content: center;
-`;
-
-export const WelcomeTitle = styled(Title)`
+export const WelcomeTitle = styled(Heading)`
   font-size: 6em;
-`
+`;

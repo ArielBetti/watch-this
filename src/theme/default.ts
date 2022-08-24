@@ -26,7 +26,7 @@ export const dark = (): ITheme => ({
       dark: "#000",
       white: "#FFF",
       inverse: "#212121",
-      pure: "#000",
+      pure: "#FFF",
     },
   },
   breakpoints: {

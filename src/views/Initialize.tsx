@@ -3,27 +3,28 @@ import { useRecoilValue } from "recoil";
 import AppRouter from "../routes";
 import selectTheme from "../theme";
 
-import { ThemeProvider } from "styled-components";
 import { atomDarkTheme } from "../store/atoms";
-import { ITheme } from "../theme/types";
 import { AppBaseUI, ResetCSS } from "../globalStyles";
+import { WebettiProvider } from "webetti-react-sdk";
+import Navigation from "../components/Navigation";
 
 const Initialize = () => {
   const prefersDarkMode = useRecoilValue(atomDarkTheme);
 
   // theme changer
-  const theme: ITheme = useMemo(
+  const theme: any = useMemo(
     () => (prefersDarkMode ? selectTheme("dark") : selectTheme("ligth")),
     [prefersDarkMode]
   );
 
   return (
-    <ThemeProvider theme={theme}>
+    <WebettiProvider theme={theme}>
       <ResetCSS />
       <AppBaseUI>
+        <Navigation />
         <AppRouter />
       </AppBaseUI>
-    </ThemeProvider>
+    </WebettiProvider>
   );
 };
 
