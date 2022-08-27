@@ -17,22 +17,22 @@ const AvatarOptionSelector = ({
   label,
 }: {
   options: string[];
-  currentOption: string;
+  currentOption: string[];
   setCurrentOption: Dispatch<SetStateAction<any>>;
   label: string;
 }) => {
   const theme: ITheme = useTheme();
-  let getIndex = options.findIndex((index) => index === currentOption);
+  let getIndex = options.findIndex((index) => index === currentOption[0]);
 
   const onNextOptionChange = useCallback(() => {
     const changed = options[getIndex + 1];
     const changedIndex = options.findIndex((index) => index === changed);
 
     if (changedIndex > options?.length + 1 || changedIndex === -1) {
-      return setCurrentOption(options[0]);
+      return setCurrentOption([options[0]]);
     }
 
-    setCurrentOption(options[changedIndex]);
+    setCurrentOption([options[changedIndex]]);
   }, [getIndex, options, setCurrentOption]);
 
   const onBackOptionChange = useCallback(() => {
@@ -40,16 +40,18 @@ const AvatarOptionSelector = ({
     const changedIndex = options.findIndex((index) => index === changed);
 
     if (changedIndex === -1) {
-      return setCurrentOption(options[options.length - 1]);
+      return setCurrentOption([options[options.length - 1]]);
     }
 
-    setCurrentOption(options[changedIndex]);
+    const changedOption = [options[changedIndex]];
+
+    setCurrentOption(changedOption);
   }, [getIndex, options, setCurrentOption]);
 
   useEffect(() => {
     if (getIndex === -1) {
       getIndex = 1;
-      setCurrentOption(options[0]);
+      setCurrentOption([options[0]]);
     }
   }, []);
 

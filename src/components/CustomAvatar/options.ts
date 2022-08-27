@@ -1,3 +1,13 @@
+export const AVATAR_ACCESSOIRES = [
+  "",
+  "sunglasses",
+  "glasses",
+  "smallGlasses",
+  "mustache",
+  "blush",
+  "birthmark",
+];
+
 export const AVATAR_AYES = [
   "variant26",
   "variant25",

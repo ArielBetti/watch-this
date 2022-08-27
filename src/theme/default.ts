@@ -2,15 +2,15 @@ import { ITheme } from "./types";
 
 export const dark = (): ITheme => ({
   colors: {
-    background: "#180F20",
+    background: "#121212",
     neutral: {
-      pure: "#0E0315",
-      1: "#12005e",
-      2: "#4a148c",
-      3: "#7b1fa2",
+      pure: "#212121",
+      1: "#1b1b1b",
+      2: "#424242",
+      3: "#373737",
     },
-    primary: "#FF6D00",
-    secondary: "#d81b60",
+    primary: "#A760FF",
+    secondary: "#FEC260",
     feedback: {
       error: "#cc0000",
       warning: "#ff8800",
@@ -25,7 +25,7 @@ export const dark = (): ITheme => ({
       3: "eeeeee",
       dark: "#000",
       white: "#FFF",
-      inverse: "#212121",
+      inverse: "#000",
       pure: "#FFF",
     },
   },

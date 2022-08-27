@@ -46,10 +46,7 @@ const Welcome = () => {
       setSignUpBody({
         name,
         password,
-        avatar: {
-          ...avatar,
-          seed: name,
-        },
+        avatar,
       });
     }
   };
@@ -92,29 +89,7 @@ const Welcome = () => {
 
   return (
     <>
-      <Container>
-        <CustomAvatar setConstructAvatar={setAvatar} seed={name} />
-        <div>
-          <Atom.WelcomeTitle variant="heading-1">YEsye</Atom.WelcomeTitle>
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="name"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type="password"
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button onClick={() => setToggleTheme(!toggleTheme)}>
-            Alterar tema
-          </button>
-          <button onClick={() => onSignUp()}>Registrar</button>
-          <button onClick={() => onSignIn()}>Entrar</button>
-        </div>
-      </Container>
+      <CustomAvatar setConstructAvatar={setAvatar} seed={name} />
     </>
   );
 };
