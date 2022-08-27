@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { useRecoilValue } from "recoil";
-import { Dropdown, Header, Heading } from "webetti-react-sdk";
+import {
+  Dropdown,
+  Header,
+  Heading,
+  Button,
+  Paragraph,
+} from "webetti-react-sdk";
 
-import { MdMovieFilter } from "react-icons/md";
+import { MdLogin, MdMovieFilter, MdOutlineAddReaction } from "react-icons/md";
 
 // recoil: atoms
 import { atomUser } from "../../store/atoms";
@@ -32,7 +38,22 @@ const Navigation = () => {
           <MdMovieFilter size="35px" color={theme?.colors?.primary} />
           <Heading variant="heading-5">WatchThis</Heading>
         </Atom.NavigationLogo>
-        <ContentLocker unlock={!!user}>
+        <ContentLocker unlock={!user}>
+          <Atom.NavigateSignButtons>
+            <Button onClick={() => console.log("teste")}>
+              <MdOutlineAddReaction
+                size="16px"
+                color={theme?.font?.colors?.pure}
+              />
+              Criar
+            </Button>
+            <Button onClick={() => console.log("teste")}>
+              <MdLogin size="16px" color={theme?.font?.colors?.pure} />
+              Entrar
+            </Button>
+          </Atom.NavigateSignButtons>
+        </ContentLocker>
+        <ContentLocker unlock={user}>
           <div>
             <Dropdown
               label={user?.name}

@@ -8,13 +8,13 @@ export const sendSignUp = selector({
   get: async ({ get }) => {
     const userSignUp = get(atomSignUpBody);
 
-    if (userSignUp) {
-      const { data } = await requester({
-        baseURL: process.env.REACT_APP_WATCH_THIS_BASE_API,
-      }).post(ENDPOINTS.register, userSignUp);
+    if (!userSignUp) return undefined;
 
-      return data;
-    }
+    const { data } = await requester({
+      baseURL: process.env.REACT_APP_WATCH_THIS_BASE_API,
+    }).post(ENDPOINTS.register, userSignUp);
+
+    return data;
   },
 });
 

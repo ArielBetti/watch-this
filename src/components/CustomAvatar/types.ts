@@ -1,4 +1,4 @@
-export type IAvatarAyes =
+export type TAvatarAyes =
   | "variant26"
   | "variant25"
   | "variant24"
@@ -26,13 +26,13 @@ export type IAvatarAyes =
   | "variant02"
   | "variant01";
 
-export type IAvatarSkinColor =
+export type TAvatarSkinColor =
   | "variant02"
   | "variant03"
   | "variant04"
   | "variant05";
 
-export type IAvatarAyesBrow =
+export type TAvatarAyesBrow =
   | "variant10"
   | "variant09"
   | "variant08"
@@ -44,7 +44,7 @@ export type IAvatarAyesBrow =
   | "variant02"
   | "variant01";
 
-export type IAvatarMouth =
+export type TAvatarMouth =
   | "variant30"
   | "variant29"
   | "variant28"
@@ -75,3 +75,11 @@ export type IAvatarMouth =
   | "variant03"
   | "variant02"
   | "variant01";
+
+export type TAvatarAccessoires =
+  | "sunglasses"
+  | "glasses"
+  | "smallGlasses"
+  | "mustache"
+  | "blush"
+  | "birthmark";

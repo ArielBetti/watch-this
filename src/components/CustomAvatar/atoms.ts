@@ -1,9 +1,10 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import styled from "styled-components";
+import { ITheme } from "../../theme/types";
 
 export const CustomAvatarContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   max-width: 220px;
@@ -38,6 +39,20 @@ export const AvatarOptions = styled.div`
 `;
 
 export const AvatarIllustration = styled(LazyLoadImage)`
-  width: 150px;
-  border-radius: 5px;
+  width: 200px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+`;
+
+export const AvatarCard = styled.div`
+  padding: 20px;
+  display: flex;
+  max-width: 300px;
+  gap: 10px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid ${({ theme }: { theme: ITheme}) => theme?.colors?.primary};
+  background-color: ${({ theme }: { theme: ITheme}) => theme?.colors?.neutral?.pure};
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;

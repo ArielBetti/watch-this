@@ -1,10 +1,17 @@
 import { atom } from "recoil";
+import { IUser } from "../../api/types";
 import { localStorageEffect } from "../../utils/localStorageEffect";
 
-export const atomUser = atom({
+export const atomUser = atom<IUser | undefined>({
   key: "atomUser",
   default: undefined,
   effects: [localStorageEffect("current_user")],
+});
+
+export const atomToken = atom<string | undefined>({
+  key: "atomToken",
+  default: undefined,
+  effects: [localStorageEffect("token")],
 });
 
 export const atomSignUpBody = atom<any>({
