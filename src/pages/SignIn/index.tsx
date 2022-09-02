@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
   useRecoilState,
   useRecoilValueLoadable,
+  useResetRecoilState,
   useSetRecoilState,
 } from "recoil";
 
@@ -37,6 +38,9 @@ const SignIn = () => {
   const [user, setUser] = useRecoilState(atomUser);
   const setToken = useSetRecoilState(atomToken);
 
+  // recoil:states: reset
+  const resetSignInBody = useResetRecoilState(atomSignInBody);
+
   // recoil: loadable
   const signInLoadable = useRecoilValueLoadable(sendSignIn);
 
@@ -48,6 +52,11 @@ const SignIn = () => {
       });
     }
   }, [name, password]);
+
+  const onNameChange = useCallback((name: string) => {
+    setLoginFeedbackError("");
+    setName(name);
+  }, []);
 
   useEffect(() => {
     if (signInLoadable.state === "hasError") {
@@ -68,9 +77,13 @@ const SignIn = () => {
     }
   }, [signInLoadable.state, signInLoadable.contents]);
 
-  const onNameChange = useCallback((name: string) => {
-    setLoginFeedbackError("");
-    setName(name);
+  useEffect(() => {
+    resetSignInBody();
+
+    return () => {
+      // will unount
+      resetSignInBody();
+    };
   }, []);
 
   return (
@@ -90,7 +103,7 @@ const SignIn = () => {
           type="password"
         />
         <Atom.LoginFeedBackError>{loginFeedbackError}</Atom.LoginFeedBackError>
-        <Button bold onClick={onSignIn}>
+        <Button bold onClick={() => onSignIn()}>
           <MdLogin size="20px" color={theme?.font?.colors?.pure} />
           Entrar
         </Button>

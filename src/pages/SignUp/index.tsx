@@ -1,7 +1,11 @@
 import { useEffect, useState, useCallback } from "react";
 import { MdOutlineAddReaction } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import {
+  useRecoilValueLoadable,
+  useResetRecoilState,
+  useSetRecoilState,
+} from "recoil";
 import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
 
@@ -38,6 +42,7 @@ const SignUp = () => {
 
   // recoil: states
   const setSignUpBody = useSetRecoilState(atomSignUpBody);
+  const resetSignUpBody = useResetRecoilState(atomSignUpBody);
 
   // recoil: loadable
   const signUpLoadable = useRecoilValueLoadable(sendSignUp);
@@ -74,6 +79,15 @@ const SignUp = () => {
   const onNameChange = useCallback((name: string) => {
     setNameFeedBack("");
     setName(name);
+  }, []);
+
+  useEffect(() => {
+    resetSignUpBody();
+
+    return () => {
+      // will unmount
+      resetSignUpBody();
+    };
   }, []);
 
   return (
@@ -119,7 +133,7 @@ const SignUp = () => {
           placeholder="Escolha uma senha"
           type="password"
         />
-        <Button bold onClick={onSignUp}>
+        <Button bold onClick={() => onSignUp()}>
           <MdOutlineAddReaction size="20px" />
           Criar
         </Button>
