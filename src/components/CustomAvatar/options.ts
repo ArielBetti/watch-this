@@ -8,7 +8,7 @@ export const AVATAR_ACCESSOIRES = [
   "birthmark",
 ];
 
-export const AVATAR_AYES = [
+export const AVATAR_EYES = [
   "variant26",
   "variant25",
   "variant24",
@@ -44,7 +44,7 @@ export const AVATAR_SKIN_COLOR = [
   "variant05",
 ];
 
-export const AVATAR_AYESBROWS = [
+export const AVATAR_EYESBROWS = [
   "variant10",
   "variant09",
   "variant08",

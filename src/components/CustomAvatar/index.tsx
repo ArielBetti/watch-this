@@ -5,8 +5,8 @@ import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/adventurer-neutral";
 import {
   AVATAR_ACCESSOIRES,
-  AVATAR_AYES,
-  AVATAR_AYESBROWS,
+  AVATAR_EYES,
+  AVATAR_EYESBROWS,
   AVATAR_MOUTH,
   AVATAR_SKIN_COLOR,
 } from "./options";
@@ -18,8 +18,8 @@ import * as Atom from "./atoms";
 // types
 import {
   TAvatarAccessoires,
-  TAvatarAyes,
-  TAvatarAyesBrow,
+  TAvatarEyes,
+  TAvatarEyesBrow,
   TAvatarMouth,
   TAvatarSkinColor,
 } from "./types";
@@ -37,8 +37,8 @@ const CustomAvatar = ({
   const AVATAR_BASE_URL = "https://avatars.dicebear.com/api/adventurer-neutral";
 
   // local: states
-  const [ayes, setAyes] = useState<TAvatarAyes | any>([]);
-  const [ayesBrows, setAyesBrows] = useState<TAvatarAyesBrow | any>([]);
+  const [eyes, setEyes] = useState<TAvatarEyes | any>([]);
+  const [eyesBrows, setEyesBrows] = useState<TAvatarEyesBrow | any>([]);
   const [mouth, setMouth] = useState<TAvatarMouth | any>([]);
   const [skinColor, setSkinColor] = useState<TAvatarSkinColor | any>([]);
   const [accessoires, setAccessoires] = useState<TAvatarAccessoires | any>([]);
@@ -50,8 +50,8 @@ const CustomAvatar = ({
     return createAvatar(style, {
       accessoires: accessoires?.[0] ? accessoires : ["birthmark"],
       accessoiresProbability: accessoires?.[0] ? 100 : 0,
-      eyes: ayes || null,
-      eyebrows: ayesBrows || null,
+      eyes: eyes || null,
+      eyebrows: eyesBrows || null,
       mouth: mouth || null,
       seed: seed || "WatchThis",
       backgroundColor: skinColor || null,
@@ -66,8 +66,8 @@ const CustomAvatar = ({
         accessoires: accessoires?.[0] ? accessoires : ["birthmark"],
         accessoiresProbability: accessoires?.[0] ? 100 : 0,
         backgroundColor: skinColor || null,
-        eyes: ayes || null,
-        eyebrows: ayesBrows || null,
+        eyes: eyes || null,
+        eyebrows: eyesBrows || null,
         mouth: mouth || null,
         flip: true,
       },
@@ -89,19 +89,19 @@ const CustomAvatar = ({
     setConstructAvatar({
       accessoires: accessoires || null,
       backgroundColor: skinColor || null,
-      eyes: ayes || null,
-      eyebrows: ayesBrows || null,
+      eyes: eyes || null,
+      eyebrows: eyesBrows || null,
       mouth: mouth || null,
       flip: true,
       url: avatarURL,
     });
-  }, [avatarURL, ayes, ayesBrows, mouth, setConstructAvatar, skinColor]);
+  }, [avatarURL, eyes, eyesBrows, mouth, setConstructAvatar, skinColor]);
 
   useEffect(() => {
     if (user) {
       setSkinColor([user?.avatar?.backgroundColor?.[0]]);
-      setAyes([user?.avatar?.eyes?.[0]]);
-      setAyesBrows([user?.avatar?.eyebrows?.[0]]);
+      setEyes([user?.avatar?.eyes?.[0]]);
+      setEyesBrows([user?.avatar?.eyebrows?.[0]]);
       setMouth([user?.avatar?.mouth?.[0]]);
       setAccessoires([user?.avatar?.accessoires?.[0]]);
     } else {
@@ -126,9 +126,9 @@ const CustomAvatar = ({
           />
           <AvatarOptionSelector
             label="Olhos"
-            setCurrentOption={setAyes}
-            options={AVATAR_AYES}
-            currentOption={ayes}
+            setCurrentOption={setEyes}
+            options={AVATAR_EYES}
+            currentOption={eyes}
           />
           <AvatarOptionSelector
             label="Cor"
@@ -138,9 +138,9 @@ const CustomAvatar = ({
           />
           <AvatarOptionSelector
             label="Sobrancelhas"
-            setCurrentOption={setAyesBrows}
-            options={AVATAR_AYESBROWS}
-            currentOption={ayesBrows}
+            setCurrentOption={setEyesBrows}
+            options={AVATAR_EYESBROWS}
+            currentOption={eyesBrows}
           />
           <AvatarOptionSelector
             label="Boca"

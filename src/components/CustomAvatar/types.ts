@@ -1,4 +1,4 @@
-export type TAvatarAyes =
+export type TAvatarEyes =
   | "variant26"
   | "variant25"
   | "variant24"
@@ -32,7 +32,7 @@ export type TAvatarSkinColor =
   | "variant04"
   | "variant05";
 
-export type TAvatarAyesBrow =
+export type TAvatarEyesBrow =
   | "variant10"
   | "variant09"
   | "variant08"
