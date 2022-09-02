@@ -11,6 +11,6 @@ export const dropdownItems = ({
   {
     icon: <MdExitToApp size="15px" color={theme?.colors?.primary} />,
     label: "Sair",
-    action: () => navigate("/sair"),
+    action: () => navigate("/logout"),
   },
 ];
