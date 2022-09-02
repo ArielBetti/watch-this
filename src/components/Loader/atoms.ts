@@ -25,7 +25,7 @@ export const Loader = styled.div`
 `;
 
 export const Disclaimer = styled.span`
-  color: ${({ theme }: { theme: ITheme }) => theme?.font?.colors?.contrast};
+  color: ${({ theme }: { theme: ITheme }) => theme?.colors?.primary};
   font-weight: bold;
   font-size: 14px;
   text-align: center;

@@ -21,7 +21,6 @@ import {
 } from "../../store/atoms";
 
 // recoil: selectors
-import { sendSignIn, sendSignUp } from "../../store/selectors";
 import CustomAvatar from "../../components/CustomAvatar";
 
 // ::
