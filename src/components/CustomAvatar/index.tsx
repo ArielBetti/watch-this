@@ -99,11 +99,11 @@ const CustomAvatar = ({
 
   useEffect(() => {
     if (user) {
-      setSkinColor(user?.avatar?.backgroundColor);
-      setAyes(user?.avatar?.eyes?.[0]);
-      setAyesBrows(user?.avatar?.eyebrows?.[0]);
-      setMouth(user?.avatar?.mouth?.[0]);
-      setAccessoires(user?.avatar?.accessoires?.[0]);
+      setSkinColor([user?.avatar?.backgroundColor?.[0]]);
+      setAyes([user?.avatar?.eyes?.[0]]);
+      setAyesBrows([user?.avatar?.eyebrows?.[0]]);
+      setMouth([user?.avatar?.mouth?.[0]]);
+      setAccessoires([user?.avatar?.accessoires?.[0]]);
     } else {
       getAvatarSvg();
     }

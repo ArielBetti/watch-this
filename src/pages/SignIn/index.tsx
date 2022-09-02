@@ -88,7 +88,7 @@ const SignIn = () => {
         />
         <Atom.LoginFeedBackError>{loginFeedbackError}</Atom.LoginFeedBackError>
         <Button onClick={onSignIn}>
-          <MdOutlineAddReaction size="16px" />
+          <MdOutlineAddReaction size="20px" />
           Entrar
         </Button>
       </Atom.SignInFormsContainer>

@@ -9,7 +9,7 @@ export const dark = (): ITheme => ({
       2: "#424242",
       3: "#373737",
     },
-    primary: "#A760FF",
+    primary: "#9147ff",
     secondary: "#FEC260",
     feedback: {
       error: "#cc0000",

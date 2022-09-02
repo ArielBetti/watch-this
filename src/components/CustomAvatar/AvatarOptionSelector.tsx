@@ -1,4 +1,12 @@
-import { Dispatch, memo, SetStateAction, useCallback, useEffect } from "react";
+import {
+  Dispatch,
+  memo,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import {
   MdKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
@@ -22,7 +30,20 @@ const AvatarOptionSelector = ({
   label: string;
 }) => {
   const theme: ITheme = useTheme();
-  let getIndex = options.findIndex((index) => index === currentOption[0]);
+
+  // memo: states
+  const getIndex = useMemo(() => {
+    const getCurrntIndex = options.findIndex(
+      (index) => index === currentOption[0]
+    );
+
+    if (getCurrntIndex === -1) {
+      setCurrentOption([options[0]]);
+      return 1;
+    }
+
+    return getCurrntIndex;
+  }, [currentOption, options, setCurrentOption]);
 
   const onNextOptionChange = useCallback(() => {
     const changed = options[getIndex + 1];
@@ -47,13 +68,6 @@ const AvatarOptionSelector = ({
 
     setCurrentOption(changedOption);
   }, [getIndex, options, setCurrentOption]);
-
-  useEffect(() => {
-    if (getIndex === -1) {
-      getIndex = 1;
-      setCurrentOption([options[0]]);
-    }
-  }, []);
 
   return (
     <Atom.AvatarOptionsSelectorContainer>

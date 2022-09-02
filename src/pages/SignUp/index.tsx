@@ -120,7 +120,7 @@ const SignUp = () => {
           type="password"
         />
         <Button onClick={onSignUp}>
-          <MdOutlineAddReaction size="16px" />
+          <MdOutlineAddReaction size="20px" />
           Criar
         </Button>
       </Atom.FormContainer>

@@ -42,13 +42,13 @@ const Navigation = () => {
           <Atom.NavigateSignButtons>
             <Button onClick={() => console.log("teste")}>
               <MdOutlineAddReaction
-                size="16px"
+                size="20px"
                 color={theme?.font?.colors?.pure}
               />
               Criar
             </Button>
             <Button onClick={() => console.log("teste")}>
-              <MdLogin size="16px" color={theme?.font?.colors?.pure} />
+              <MdLogin size="20px" color={theme?.font?.colors?.pure} />
               Entrar
             </Button>
           </Atom.NavigateSignButtons>
