@@ -119,7 +119,7 @@ const SignUp = () => {
           placeholder="Escolha uma senha"
           type="password"
         />
-        <Button onClick={onSignUp}>
+        <Button bold onClick={onSignUp}>
           <MdOutlineAddReaction size="20px" />
           Criar
         </Button>

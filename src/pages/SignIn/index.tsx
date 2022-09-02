@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { MdOutlineAddReaction } from "react-icons/md";
+import { MdLogin } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import {
   useRecoilState,
@@ -19,9 +19,12 @@ import { sendSignIn } from "../../store/selectors";
 // atoms: components
 import * as Atom from "./atoms";
 import Loader from "../../components/Loader";
+import { useTheme } from "styled-components";
+import { ITheme } from "../../theme/types";
 
 // ::
 const SignIn = () => {
+  const theme: ITheme = useTheme();
   const navigate = useNavigate();
 
   // local: states
@@ -87,8 +90,8 @@ const SignIn = () => {
           type="password"
         />
         <Atom.LoginFeedBackError>{loginFeedbackError}</Atom.LoginFeedBackError>
-        <Button onClick={onSignIn}>
-          <MdOutlineAddReaction size="20px" />
+        <Button bold onClick={onSignIn}>
+          <MdLogin size="20px" color={theme?.font?.colors?.pure} />
           Entrar
         </Button>
       </Atom.SignInFormsContainer>

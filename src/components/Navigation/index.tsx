@@ -40,14 +40,14 @@ const Navigation = () => {
         </Atom.NavigationLogo>
         <ContentLocker unlock={!user}>
           <Atom.NavigateSignButtons>
-            <Button onClick={() => console.log("teste")}>
+            <Button bold onClick={() => navigate("/signin")}>
               <MdOutlineAddReaction
                 size="20px"
                 color={theme?.font?.colors?.pure}
               />
               Criar
             </Button>
-            <Button onClick={() => console.log("teste")}>
+            <Button bold onClick={() => navigate("/login")}>
               <MdLogin size="20px" color={theme?.font?.colors?.pure} />
               Entrar
             </Button>

@@ -9014,10 +9014,10 @@ web-vitals@^2.1.0:
   resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-2.1.4.tgz#76563175a475a5e835264d373704f9dde718290c"
   integrity sha512-sVWcwhU5mX6crfI5Vd2dC4qchyTqxV8URinzt25XqVh+bHEPGH4C3NPrNionCP7Obx59wrYEbNlw4Z8sjALzZg==
 
-webetti-react-sdk@1.0.32:
-  version "1.0.32"
-  resolved "https://registry.yarnpkg.com/webetti-react-sdk/-/webetti-react-sdk-1.0.32.tgz#44f4930cdb6217034c3f53dae9afb8ea2f4a5728"
-  integrity sha512-GDOeU/XcgWyeGhe7zezm53726UjrxieWB8GNtGWmmurY3je2YrWmbrDyzSgpFzQ4TGMs8P1H8qYmve3QUrw55A==
+webetti-react-sdk@1.0.35:
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/webetti-react-sdk/-/webetti-react-sdk-1.0.35.tgz#0b1c505b8b15e7cfc44c1aef46fdd962314d411b"
+  integrity sha512-Ny5bGUnOo1npFrm2YFPPr9yrXDmPt0hgNpEhPtdgGh48IRxj/cnN7yws5jnEwObKyZeqChIp10dnedAdhM76Yg==
   dependencies:
     react "^18.2.0"
     react-dom "^18.2.0"
