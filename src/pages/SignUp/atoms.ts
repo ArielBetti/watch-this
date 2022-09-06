@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Input, Paragraph } from "webetti-react-sdk";
+import { Input } from "webetti-react-sdk";
 import { ITheme } from "../../theme/types";
 
 export const SignUpContainer = styled.div`
@@ -8,6 +8,7 @@ export const SignUpContainer = styled.div`
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
+  margin-top: 70px;
 `;
 
 export const FormContainer = styled.div`

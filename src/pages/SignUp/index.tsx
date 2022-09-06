@@ -90,6 +90,10 @@ const SignUp = () => {
     };
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <Atom.SignUpContainer>
       <ContentLocker unlock={showConfetti}>
@@ -109,7 +113,7 @@ const SignUp = () => {
         open={modalOpen}
         setOpen={setModalOpen}
         textButton="Fazer login"
-        actionButton={() => navigate("/entrar")}
+        actionButton={() => navigate("/login")}
       >
         <Paragraph>
           O usuário "{name}" foi criado com sucesso, faça o seu login agora

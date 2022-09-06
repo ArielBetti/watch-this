@@ -60,6 +60,7 @@ export const ResetCSS = createGlobalStyle`
 export const AppBaseUI = styled.div`
   font-family: "Montserrat", sans-serif;
   padding-bottom: 120px;
+  height: 100%;
   min-height: 100vh;
   width: 100%;
   -webkit-font-smoothing: antialiased !important;

@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { MdLogin } from "react-icons/md";
+import { MdLogin, MdOutlineAddReaction } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import {
   useRecoilState,
@@ -22,6 +22,7 @@ import * as Atom from "./atoms";
 import Loader from "../../components/Loader";
 import { useTheme } from "styled-components";
 import { ITheme } from "../../theme/types";
+import WelcomeBack from "../../components/WelcomeBack";
 
 // ::
 const SignIn = () => {
@@ -86,6 +87,14 @@ const SignIn = () => {
     };
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  if (user) {
+    return <WelcomeBack />;
+  }
+
   return (
     <Atom.SignInContainer>
       <Atom.SignInFormsContainer>
@@ -103,10 +112,19 @@ const SignIn = () => {
           type="password"
         />
         <Atom.LoginFeedBackError>{loginFeedbackError}</Atom.LoginFeedBackError>
-        <Button bold onClick={() => onSignIn()}>
-          <MdLogin size="20px" color={theme?.font?.colors?.pure} />
-          Entrar
-        </Button>
+        <Atom.ButtonsContainer>
+          <Button bold onClick={() => onSignIn()}>
+            <MdLogin size="20px" color={theme?.font?.colors?.pure} />
+            Entrar
+          </Button>
+          <Button bold onClick={() => navigate("/signin")}>
+            <MdOutlineAddReaction
+              size="20px"
+              color={theme?.font?.colors?.pure}
+            />
+            Criar nova conta
+          </Button>
+        </Atom.ButtonsContainer>
       </Atom.SignInFormsContainer>
     </Atom.SignInContainer>
   );

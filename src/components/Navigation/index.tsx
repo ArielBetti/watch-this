@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useRecoilValue } from "recoil";
 import {
   Dropdown,
@@ -17,19 +17,30 @@ import { atomUser } from "../../store/atoms";
 import * as Atom from "./atoms";
 import { useTheme } from "styled-components";
 import { ITheme } from "../../theme/types";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ContentLocker from "../ContentLocker";
 import { dropdownItems } from "./config";
 
 const Navigation = () => {
   const theme: ITheme = useTheme();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   // local: states
   const [open, setOpen] = useState<boolean>(false);
 
   // recoil: states
   const user: any = useRecoilValue(atomUser);
+
+  // memo: state
+  const displaySignButtons = useMemo(() => {
+    const lockPath = pathname === "/" || pathname === "/login";
+
+    if (user) return false;
+    if (lockPath) return false;
+
+    return true;
+  }, [pathname, user]);
 
   return (
     <Header trackHeaderActive={open}>
@@ -38,7 +49,7 @@ const Navigation = () => {
           <MdMovieFilter size="35px" color={theme?.colors?.primary} />
           <Heading variant="heading-5">WatchThis</Heading>
         </Atom.NavigationLogo>
-        <ContentLocker unlock={!user}>
+        <ContentLocker unlock={displaySignButtons}>
           <Atom.NavigateSignButtons>
             <Button bold onClick={() => navigate("/signin")}>
               <MdOutlineAddReaction

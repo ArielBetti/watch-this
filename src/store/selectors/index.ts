@@ -32,3 +32,14 @@ export const sendSignIn = selector({
     }
   },
 });
+
+export const selectorUserLogout = selector({
+  key: "selectorUserLogout",
+  get: async ({ get }) => {
+    const { data } = await requester({
+      baseURL: process.env.REACT_APP_WATCH_THIS_BASE_API,
+    }).post(ENDPOINTS.logout);
+
+    return data;
+  },
+});
