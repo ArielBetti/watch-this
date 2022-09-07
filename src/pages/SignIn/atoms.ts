@@ -37,6 +37,7 @@ export const ButtonsContainer = styled.div`
   gap: 15px;
 
   @media (max-width: ${(props) => props.theme?.breakpoints.lg}) {
+    width: 100%;
     button {
       width: 100%;
     }

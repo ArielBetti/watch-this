@@ -17,19 +17,20 @@ const WelcomeBack = () => {
 
   return (
     <Atom.WelcomeBackContainer>
-      <Atom.WelcomeBackAvatar
-        effect="blur"
-        src={user?.avatar?.url}
-        alt="Illustração de avatar"
-      />
-      <Button bold onClick={() => navigate("/home")}>
-        <MdLogin size="20px" color={theme?.font?.colors?.pure} />
-        Continuar como {user?.name}
-      </Button>
-      <Button bold onClick={() => navigate("/logout")}>
-        <MdLogout size="20px" color={theme?.font?.colors?.pure} />
-        Entrar com outra conta
-      </Button>
+      <Atom.WelcomeBackCard>
+        <Atom.WelcomeBackAvatar
+          src={user?.avatar?.url}
+          alt="Illustração de avatar"
+        />
+        <Button bold onClick={() => navigate("/home")}>
+          <MdLogin size="20px" color={theme?.font?.colors?.pure} />
+          Continuar como {user?.name}
+        </Button>
+        <Button bold onClick={() => navigate("/logout")}>
+          <MdLogout size="20px" color={theme?.font?.colors?.pure} />
+          Entrar com outra conta
+        </Button>
+      </Atom.WelcomeBackCard>
     </Atom.WelcomeBackContainer>
   );
 };

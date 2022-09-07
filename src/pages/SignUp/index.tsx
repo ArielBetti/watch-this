@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { MdOutlineAddReaction } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import {
+  useRecoilValue,
   useRecoilValueLoadable,
   useResetRecoilState,
   useSetRecoilState,
@@ -16,7 +17,7 @@ import { IAvatar } from "../../api/types";
 import { Button, Modal, Paragraph } from "webetti-react-sdk";
 
 // recoil: atoms
-import { atomSignUpBody } from "../../store/atoms";
+import { atomSignUpBody, atomUser } from "../../store/atoms";
 
 // recoil: selectors
 import { sendSignUp } from "../../store/selectors";
@@ -26,6 +27,7 @@ import * as Atom from "./atoms";
 import CustomAvatar from "../../components/CustomAvatar";
 import ContentLocker from "../../components/ContentLocker";
 import Loader from "../../components/Loader";
+import WelcomeBack from "../../components/WelcomeBack";
 
 // ::
 const SignUp = () => {
@@ -33,6 +35,7 @@ const SignUp = () => {
   const { width, height } = useWindowSize();
 
   // local: states
+  const user = useRecoilValue(atomUser);
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [avatar, setAvatar] = useState<IAvatar | {}>({});
@@ -93,6 +96,10 @@ const SignUp = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  if (user) {
+    return <WelcomeBack />;
+  }
 
   return (
     <Atom.SignUpContainer>
