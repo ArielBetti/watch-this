@@ -1,7 +1,7 @@
 import { selector } from "recoil";
 import { ENDPOINTS } from "../../api/endpoints";
 import { requester } from "../../api/requester";
-import { atomSignInBody, atomSignUpBody } from "../atoms";
+import { atomSignInBody, atomSignUpBody, atomToken } from "../atoms";
 
 export const sendSignUp = selector({
   key: "sendSignUp",
@@ -30,6 +30,18 @@ export const sendSignIn = selector({
 
       return data;
     }
+  },
+});
+
+export const getUserLists = selector({
+  key: "getUserLists",
+  get: async ({ get }) => {
+    const { data } = await requester({
+      baseURL: process.env.REACT_APP_WATCH_THIS_BASE_API,
+      Authorization: get(atomToken)
+    }).get(ENDPOINTS.getUserList);
+
+    return data;
   },
 });
 

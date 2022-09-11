@@ -1,6 +1,6 @@
-import { ITheme } from "./types";
+import { IWebettiTheme } from "webetti-react-sdk";
 
-export const dark = (): ITheme => ({
+export const dark = (): IWebettiTheme => ({
   colors: {
     background: "#121212",
     neutral: {
@@ -15,6 +15,7 @@ export const dark = (): ITheme => ({
       error: "#cc0000",
       warning: "#ff8800",
       success: "#007e33",
+      info: "0d47a1",
     },
   },
   font: {
@@ -39,5 +40,16 @@ export const dark = (): ITheme => ({
   transitions: {
     time: "0.3s",
     type: "ease",
+  },
+  spacing: {
+    xxxs: "4px",
+    xxs: "8px",
+    xs: "16px",
+    sm: "24px",
+    md: "32px",
+    lg: "40px",
+    xl: "48px",
+    xxl: "56px",
+    xxxl: "64px",
   },
 });
