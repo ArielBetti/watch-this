@@ -1,6 +1,12 @@
 import { FC } from "react";
-import { Heading, Paragraph, Stacker } from "webetti-react-sdk";
+import { useTheme } from "styled-components";
+import { useRecoilState } from "recoil";
+import { MdRestartAlt } from "react-icons/md";
+import { Button, Heading, Paragraph, Stacker } from "webetti-react-sdk";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+
+// recoil: atoms
+import { atomHashUserList } from "../../store/hashs";
 
 // atoms: components
 import * as Atom from "./atoms";
@@ -8,14 +14,17 @@ import CardList from "../CardList";
 import CreateList from "../CreateList";
 
 // types
+import { ITheme } from "../../theme/types";
 import { IUserListProps } from "./types";
 import { IEndpointUserLists } from "../../api/types";
-import { useTheme } from "styled-components";
-import { ITheme } from "../../theme/types";
 
 // ::
 const UserLists: FC<IUserListProps> = ({ error, lists, loading }) => {
   const theme: ITheme = useTheme();
+
+  // atoms: states
+  const [retryGetUserLists, setRetryGetUserLists] =
+    useRecoilState(atomHashUserList);
 
   return (
     <>
@@ -23,7 +32,16 @@ const UserLists: FC<IUserListProps> = ({ error, lists, loading }) => {
       <Stacker top="sm">
         <CreateList />
       </Stacker>
-      {error && <Paragraph>Em breve tratamento para erro</Paragraph>}
+      {error && (
+        <Stacker all="sm">
+          <Heading variant="heading-5">Ocorreu um erro na listagem.</Heading>
+          <Stacker top="sm">
+            <Button onClick={() => setRetryGetUserLists(retryGetUserLists + 1)}>
+              <MdRestartAlt /> Tentar novamente
+            </Button>
+          </Stacker>
+        </Stacker>
+      )}
       {loading && (
         <Stacker all="sm">
           <SkeletonTheme
